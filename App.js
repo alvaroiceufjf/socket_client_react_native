@@ -19,6 +19,20 @@ const App = () => {
     setLight(args[0]);
   });
 
+  socket.on('emergency', (...args) => {
+    console.log("Modo de Emergência ativado.");
+    let c = 1;
+    while(c ==1){
+      setLight(args[0]);
+      setLight(!args[0]);
+    }
+  });
+
+  socket.on('batteryAlert', (...args) => {
+    console.log("Seu celular está com pouca bateria. Flash desligado");
+    setLight(args[0]);
+  });
+
   return <SafeAreaView />;
 };
 
